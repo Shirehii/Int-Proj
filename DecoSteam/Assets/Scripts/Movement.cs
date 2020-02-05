@@ -10,11 +10,18 @@ public class Movement : MonoBehaviour
 
     public void Move()
     {
-        rb.velocity = pc.plrSpd * new Vector2(pc.moveP1 * pc.plrSpd, rb.velocity.y);
-        rig.velocity = pc.plrSpd * new Vector2(pc.moveP2 * pc.plrSpd, rb.velocity.y);
+        if (pc.directionP1 != 0)
+        {
+            rb.velocity = pc.plrSpd * new Vector2(pc.directionP1 * pc.plrSpd, rb.velocity.y);
+        }
+
+        if (pc.directionP2 != 0)
+        {
+            rig.velocity = pc.plrSpd * new Vector2(pc.directionP2 * pc.plrSpd, rig.velocity.y);
+        }
     }
 
-    void Jump()
+    public void Jump()
     {
 
     }

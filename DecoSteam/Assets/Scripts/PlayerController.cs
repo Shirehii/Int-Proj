@@ -9,8 +9,8 @@ public class PlayerController : MonoBehaviour
     public Movement mvmnt;
 
     //movement variables
-    public int moveP1;
-    public int moveP2;
+    public int directionP1;
+    public int directionP2;
     private bool jump = false;
 
     void Start()
@@ -23,22 +23,33 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            moveP1 = -1;
+            directionP1 = -1;
         }
 
         if (Input.GetKeyDown(KeyCode.D))
         {
-            moveP1 = 1;
+            directionP1 = 1;
         }
+        
+        if (Input.GetKey(KeyCode.A) == false && Input.GetKey(KeyCode.D) == false)
+        {
+            directionP1 = 0;
+        }
+
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            moveP2 = -1;
+            directionP2 = -1;
         }
 
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            moveP2 = -1;
+            directionP2 = 1;
+        }
+
+        if (Input.GetKey(KeyCode.LeftArrow) == false && Input.GetKey(KeyCode.RightArrow) == false)
+        {
+            directionP2 = 0;
         }
 
     }
@@ -46,7 +57,7 @@ public class PlayerController : MonoBehaviour
     //Movement Physics
     void FixedUpdate()
     {
-        if (moveP1 != 0 || moveP2 != 0)
+        if (directionP1 != 0 || directionP2 != 0)
         {
             mvmnt.Move();
         }
