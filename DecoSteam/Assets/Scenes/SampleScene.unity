@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 299108977}
   m_Layer: 0
   m_Name: Platform
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -348,6 +348,8 @@ MonoBehaviour:
   mvmnt: {fileID: 1173197727}
   directionP1: 0
   directionP2: 0
+  jumpP1: 0
+  jumpP2: 0
 --- !u!114 &1173197727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -616,3 +618,5 @@ MonoBehaviour:
   mvmnt: {fileID: 2023852597}
   directionP1: 0
   directionP2: 0
+  jumpP1: 0
+  jumpP2: 0

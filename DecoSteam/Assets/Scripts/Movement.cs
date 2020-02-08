@@ -8,6 +8,9 @@ public class Movement : MonoBehaviour
     public Rigidbody2D rig;
     public PlayerController pc;
 
+    private bool isGroundedP1;
+    private bool isGroundedP2;
+
     public void Move()
     {
         if (pc.directionP1 != 0)
@@ -23,7 +26,24 @@ public class Movement : MonoBehaviour
 
     public void Jump()
     {
+        if (pc.jumpP1 == true)
+        {
+            GroundCheck();
+            if (isGroundedP1 == true)
+            {
+                rb.AddForce(new Vector2(0, pc.jmpSpd));
+            }
+        }
 
+        if (pc.jumpP2 == true)
+        {
+            rig.AddForce(new Vector2(0, pc.jmpSpd));
+        }
+    }
+
+    void GroundCheck()
+    {
+        //ADD GROUND CHECK CONDITIONS HERE
     }
 
     //F

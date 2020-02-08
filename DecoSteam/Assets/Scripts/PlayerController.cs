@@ -11,7 +11,8 @@ public class PlayerController : MonoBehaviour
     //movement variables
     public int directionP1;
     public int directionP2;
-    private bool jump = false;
+    public bool jumpP1 = false;
+    public bool jumpP2 = false;
 
     void Start()
     {
@@ -51,7 +52,16 @@ public class PlayerController : MonoBehaviour
         {
             directionP2 = 0;
         }
+        
+        if (Input.GetKey(KeyCode.W))
+        {
+            jumpP1 = true;
+        }
 
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            jumpP2 = true;
+        }
     }
 
     //Movement Physics
@@ -60,6 +70,11 @@ public class PlayerController : MonoBehaviour
         if (directionP1 != 0 || directionP2 != 0)
         {
             mvmnt.Move();
+        }
+
+        if (jumpP1 == true || jumpP2 == true)
+        {
+            mvmnt.Jump();
         }
     }
 
