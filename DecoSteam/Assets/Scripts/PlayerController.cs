@@ -14,51 +14,47 @@ public class PlayerController : MonoBehaviour
     public bool jumpP1 = false;
     public bool jumpP2 = false;
 
-    void Start()
-    {
-
-    }
-
     //Player Input
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        //--PLAYER 1 INPUTS--
+        if (Input.GetKeyDown(KeyCode.A)) //Left
         {
             directionP1 = -1;
         }
 
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D)) //Right
         {
             directionP1 = 1;
         }
         
-        if (Input.GetKey(KeyCode.A) == false && Input.GetKey(KeyCode.D) == false)
+        if (Input.GetKey(KeyCode.A) == false && Input.GetKey(KeyCode.D) == false) //Stop
         {
             directionP1 = 0;
         }
 
-
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            directionP2 = -1;
-        }
-
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            directionP2 = 1;
-        }
-
-        if (Input.GetKey(KeyCode.LeftArrow) == false && Input.GetKey(KeyCode.RightArrow) == false)
-        {
-            directionP2 = 0;
-        }
-        
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W)) //Jump
         {
             jumpP1 = true;
         }
 
-        if (Input.GetKey(KeyCode.UpArrow))
+        //--PLAYER 2 INPUTS--
+        if (Input.GetKeyDown(KeyCode.LeftArrow)) //Left
+        {
+            directionP2 = -1;
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightArrow)) //Right
+        {
+            directionP2 = 1;
+        }
+
+        if (Input.GetKey(KeyCode.LeftArrow) == false && Input.GetKey(KeyCode.RightArrow) == false) //Stop
+        {
+            directionP2 = 0;
+        }
+
+        if (Input.GetKey(KeyCode.UpArrow)) //Jump
         {
             jumpP2 = true;
         }

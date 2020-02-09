@@ -15,12 +15,12 @@ public class Movement : MonoBehaviour
     {
         if (pc.directionP1 != 0)
         {
-            rb.velocity = pc.plrSpd * new Vector2(pc.directionP1 * pc.plrSpd, rb.velocity.y);
+            rb.velocity = new Vector2(pc.directionP1 * pc.plrSpd, rb.velocity.y);
         }
 
         if (pc.directionP2 != 0)
         {
-            rig.velocity = pc.plrSpd * new Vector2(pc.directionP2 * pc.plrSpd, rig.velocity.y);
+            rig.velocity = new Vector2(pc.directionP2 * pc.plrSpd, rig.velocity.y);
         }
     }
 
@@ -28,22 +28,36 @@ public class Movement : MonoBehaviour
     {
         if (pc.jumpP1 == true)
         {
-            GroundCheck();
+            pc.jumpP1 = false;
             if (isGroundedP1 == true)
             {
                 rb.AddForce(new Vector2(0, pc.jmpSpd));
+                isGroundedP1 = false;
             }
         }
 
         if (pc.jumpP2 == true)
         {
-            rig.AddForce(new Vector2(0, pc.jmpSpd));
+            pc.jumpP2 = false;
+            if (isGroundedP2 == true)
+            {
+                rig.AddForce(new Vector2(0, pc.jmpSpd));
+                isGroundedP2 = false;
+            }
         }
     }
 
-    void GroundCheck()
+    private void OnCollisionEnter2D(Collision2D col)
     {
-        //ADD GROUND CHECK CONDITIONS HERE
+        if (col.gameObject.tag == "Platform" && gameObject.tag == "Player1")
+        {
+            isGroundedP1 = true;
+        }
+
+        if (col.gameObject.tag == "Platform" && gameObject.tag == "Player2")
+        {
+            isGroundedP2 = true;
+        }
     }
 
     //F
