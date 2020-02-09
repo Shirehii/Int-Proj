@@ -12,6 +12,12 @@ public class PlayerController : MonoBehaviour
     public int direction;
     public bool jump = false;
 
+    private void Awake()
+    {
+        //Get Components
+        mvmnt = gameObject.GetComponent<Movement>();
+    }
+
     //Player Input
     void Update()
     {

@@ -345,7 +345,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plrSpd: 5
   jmpSpd: 500
-  mvmnt: {fileID: 1173197727}
+  mvmnt: {fileID: 0}
   direction: 0
   jump: 0
 --- !u!114 &1173197727
@@ -360,8 +360,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c113c84658e28dd4a8d41cc0db9c279b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 1173197729}
-  pc: {fileID: 1173197726}
+  rb: {fileID: 0}
+  pc: {fileID: 0}
 --- !u!70 &1173197728
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -558,8 +558,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c113c84658e28dd4a8d41cc0db9c279b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 2023852598}
-  pc: {fileID: 2023852600}
+  rb: {fileID: 0}
+  pc: {fileID: 0}
 --- !u!50 &2023852598
 Rigidbody2D:
   serializedVersion: 4
@@ -611,6 +611,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plrSpd: 5
   jmpSpd: 500
-  mvmnt: {fileID: 2023852597}
+  mvmnt: {fileID: 0}
   direction: 0
   jump: 0

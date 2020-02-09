@@ -9,7 +9,13 @@ public class Movement : MonoBehaviour
 
     private bool isGrounded;
 
-    public void Move()
+    private void Awake()
+    {
+        rb = gameObject.GetComponent<Rigidbody2D>();
+        pc = gameObject.GetComponent<PlayerController>();
+    }
+
+    public void Move() //Horizontal movement
     {
         if (pc.direction != 0)
         {
@@ -17,7 +23,7 @@ public class Movement : MonoBehaviour
         }
     }
 
-    public void Jump()
+    public void Jump() //Jumping
     {
         if (pc.jump == true)
         {
@@ -30,7 +36,7 @@ public class Movement : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D col)
+    private void OnCollisionEnter2D(Collision2D col) //GroundCheck
     {
         if (col.gameObject.tag == "Platform")
         {
