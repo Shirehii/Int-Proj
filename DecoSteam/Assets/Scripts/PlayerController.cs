@@ -9,66 +9,70 @@ public class PlayerController : MonoBehaviour
     public Movement mvmnt;
 
     //movement variables
-    public int directionP1;
-    public int directionP2;
-    public bool jumpP1 = false;
-    public bool jumpP2 = false;
+    public int direction;
+    public bool jump = false;
 
     //Player Input
     void Update()
     {
         //--PLAYER 1 INPUTS--
-        if (Input.GetKeyDown(KeyCode.A)) //Left
+        if (gameObject.tag == "Player1")
         {
-            directionP1 = -1;
-        }
+            if (Input.GetKeyDown(KeyCode.A)) //Left
+            {
+                direction = -1;
+            }
 
-        if (Input.GetKeyDown(KeyCode.D)) //Right
-        {
-            directionP1 = 1;
-        }
-        
-        if (Input.GetKey(KeyCode.A) == false && Input.GetKey(KeyCode.D) == false) //Stop
-        {
-            directionP1 = 0;
-        }
+            if (Input.GetKeyDown(KeyCode.D)) //Right
+            {
+                direction = 1;
+            }
 
-        if (Input.GetKey(KeyCode.W)) //Jump
-        {
-            jumpP1 = true;
+            if (Input.GetKey(KeyCode.A) == false && Input.GetKey(KeyCode.D) == false) //Stop
+            {
+                direction = 0;
+            }
+
+            if (Input.GetKey(KeyCode.W)) //Jump
+            {
+                jump = true;
+            }
         }
 
         //--PLAYER 2 INPUTS--
-        if (Input.GetKeyDown(KeyCode.LeftArrow)) //Left
+        if (gameObject.tag == "Player2")
         {
-            directionP2 = -1;
-        }
+            if (Input.GetKeyDown(KeyCode.LeftArrow)) //Left
+            {
+                direction = -1;
+            }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow)) //Right
-        {
-            directionP2 = 1;
-        }
+            if (Input.GetKeyDown(KeyCode.RightArrow)) //Right
+            {
+                direction = 1;
+            }
 
-        if (Input.GetKey(KeyCode.LeftArrow) == false && Input.GetKey(KeyCode.RightArrow) == false) //Stop
-        {
-            directionP2 = 0;
-        }
+            if (Input.GetKey(KeyCode.LeftArrow) == false && Input.GetKey(KeyCode.RightArrow) == false) //Stop
+            {
+                direction = 0;
+            }
 
-        if (Input.GetKey(KeyCode.UpArrow)) //Jump
-        {
-            jumpP2 = true;
+            if (Input.GetKey(KeyCode.UpArrow)) //Jump
+            {
+                jump = true;
+            }
         }
     }
 
     //Movement Physics
     void FixedUpdate()
     {
-        if (directionP1 != 0 || directionP2 != 0)
+        if (direction != 0)
         {
             mvmnt.Move();
         }
 
-        if (jumpP1 == true || jumpP2 == true)
+        if (jump)
         {
             mvmnt.Jump();
         }
