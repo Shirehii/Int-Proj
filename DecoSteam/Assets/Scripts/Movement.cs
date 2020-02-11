@@ -14,14 +14,20 @@ public class Movement : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody2D>();
         pc = gameObject.GetComponent<PlayerController>();
     }
+    
+    public void Stand() //Standing
+    {
+        pc.plrSpd = pc.plrSpd * 100/100;
+    }
 
-    public void Crouch()
+    public void Crouch() //Crouching
     {
         if (isGrounded)
         {
-            pc.plrSpd
+            ;
         }
     }
+
     public void Move() //Horizontal movement
     {
         if (pc.direction != 0)

@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour
                 stand = false;
                 crouch = true;
             }
-            else
+            else //Standing
             {
                 stand = true;
                 crouch = false;
