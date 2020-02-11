@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     //movement variables
     public int direction;
     public bool jump = false;
+    public bool crouch = false;
+    public bool stand = false;
 
     private void Awake()
     {
@@ -43,6 +45,17 @@ public class PlayerController : MonoBehaviour
             {
                 jump = true;
             }
+
+            if (Input.GetKeyDown(KeyCode.S) && mvmnt.isGrounded) //Crouch
+            {
+                stand = false;
+                crouch = true;
+            }
+            else if (Input.GetKeyUp(KeyCode.S) && mvmnt.isGrounded) //Standing
+            {
+                stand = true;
+                crouch = false;
+            }
         }
 
         //--PLAYER 2 INPUTS--
@@ -67,6 +80,17 @@ public class PlayerController : MonoBehaviour
             {
                 jump = true;
             }
+
+            if (Input.GetKeyDown(KeyCode.DownArrow) && mvmnt.isGrounded) //Crouch
+            {
+                stand = false;
+                crouch = true;
+            }
+            else if (Input.GetKeyUp(KeyCode.DownArrow) && !crouch) //Standing
+            {
+                stand = true;
+                crouch = false;
+            }
         }
     }
 
@@ -81,6 +105,16 @@ public class PlayerController : MonoBehaviour
         if (jump)
         {
             mvmnt.Jump();
+        }
+
+        if (crouch)
+        {
+            mvmnt.Crouch();
+        }
+
+        if (stand)
+        {
+            mvmnt.Stand();
         }
     }
 
