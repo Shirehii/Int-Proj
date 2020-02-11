@@ -10,7 +10,8 @@ public class Movement : MonoBehaviour
 
     //Physics variables
     private float baseSpeed;
-    private bool isGrounded;
+    public bool isGrounded; //for jumping
+    public bool isFlying; //for other mechanics
 
     private void Awake()
     {
@@ -24,7 +25,7 @@ public class Movement : MonoBehaviour
     
     public void Stand() //Standing
     {
-        pc.plrSpd = pc.plrSpd + baseSpeed * 80/100;
+        pc.plrSpd = baseSpeed;
         pc.stand = false;
     }
 
@@ -63,6 +64,14 @@ public class Movement : MonoBehaviour
         if (col.gameObject.tag == "Platform")
         {
             isGrounded = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D col) //GroundCheck the Sequel(tm)
+    {
+        if (col.gameObject.tag == "Platform")
+        {
+            isFlying = true;
         }
     }
 

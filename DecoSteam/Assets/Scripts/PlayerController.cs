@@ -46,12 +46,12 @@ public class PlayerController : MonoBehaviour
                 jump = true;
             }
 
-            if (Input.GetKeyDown(KeyCode.S)) //Crouch
+            if (Input.GetKeyDown(KeyCode.S) && mvmnt.isGrounded) //Crouch
             {
                 stand = false;
                 crouch = true;
             }
-            else if (Input.GetKeyUp(KeyCode.S)) //Standing
+            else if (Input.GetKeyUp(KeyCode.S) && mvmnt.isGrounded) //Standing
             {
                 stand = true;
                 crouch = false;
@@ -81,12 +81,12 @@ public class PlayerController : MonoBehaviour
                 jump = true;
             }
 
-            if (Input.GetKeyDown(KeyCode.DownArrow)) //Crouch
+            if (Input.GetKeyDown(KeyCode.DownArrow) && mvmnt.isGrounded) //Crouch
             {
                 stand = false;
                 crouch = true;
             }
-            else if (Input.GetKeyUp(KeyCode.DownArrow)) //Standing
+            else if (Input.GetKeyUp(KeyCode.DownArrow) && !crouch) //Standing
             {
                 stand = true;
                 crouch = false;
