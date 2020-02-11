@@ -15,6 +15,13 @@ public class Movement : MonoBehaviour
         pc = gameObject.GetComponent<PlayerController>();
     }
 
+    public void Crouch()
+    {
+        if (isGrounded)
+        {
+            pc.plrSpd
+        }
+    }
     public void Move() //Horizontal movement
     {
         if (pc.direction != 0)
