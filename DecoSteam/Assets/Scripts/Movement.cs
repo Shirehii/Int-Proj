@@ -5,25 +5,43 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     public Rigidbody2D rb;
-    public Rigidbody2D rig;
     public PlayerController pc;
 
-    public void Move()
-    {
-        if (pc.directionP1 != 0)
-        {
-            rb.velocity = pc.plrSpd * new Vector2(pc.directionP1 * pc.plrSpd, rb.velocity.y);
-        }
+    private bool isGrounded;
 
-        if (pc.directionP2 != 0)
+    private void Awake()
+    {
+        rb = gameObject.GetComponent<Rigidbody2D>();
+        pc = gameObject.GetComponent<PlayerController>();
+    }
+
+    public void Move() //Horizontal movement
+    {
+        if (pc.direction != 0)
         {
-            rig.velocity = pc.plrSpd * new Vector2(pc.directionP2 * pc.plrSpd, rig.velocity.y);
+            rb.velocity = new Vector2(pc.direction * pc.plrSpd, rb.velocity.y);
         }
     }
 
-    public void Jump()
+    public void Jump() //Jumping
     {
+        if (pc.jump == true)
+        {
+            pc.jump = false;
+            if (isGrounded == true)
+            {
+                rb.AddForce(new Vector2(0, pc.jmpSpd));
+                isGrounded = false;
+            }
+        }
+    }
 
+    private void OnCollisionEnter2D(Collision2D col) //GroundCheck
+    {
+        if (col.gameObject.tag == "Platform")
+        {
+            isGrounded = true;
+        }
     }
 
     //F
