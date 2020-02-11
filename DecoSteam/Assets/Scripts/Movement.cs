@@ -4,27 +4,36 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    //Component variables
     public Rigidbody2D rb;
     public PlayerController pc;
 
+    //Physics variables
+    private float baseSpeed;
     private bool isGrounded;
 
     private void Awake()
     {
+        //Get Components
         rb = gameObject.GetComponent<Rigidbody2D>();
         pc = gameObject.GetComponent<PlayerController>();
+
+        //Initialize
+        baseSpeed = pc.plrSpd;
     }
     
     public void Stand() //Standing
     {
-        pc.plrSpd = pc.plrSpd * 100/100;
+        pc.plrSpd = pc.plrSpd + baseSpeed * 80/100;
+        pc.stand = false;
     }
 
     public void Crouch() //Crouching
     {
         if (isGrounded)
         {
-            ;
+            pc.plrSpd = pc.plrSpd - baseSpeed * 80/100;
+            pc.crouch = false;
         }
     }
 

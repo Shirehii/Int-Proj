@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public int direction;
     public bool jump = false;
     public bool crouch = false;
-    public bool stand = true;
+    public bool stand = false;
 
     private void Awake()
     {
@@ -46,9 +46,15 @@ public class PlayerController : MonoBehaviour
                 jump = true;
             }
 
-            if (Input.GetKey(KeyCode.S)) //Crouch
+            if (Input.GetKeyDown(KeyCode.S)) //Crouch
             {
+                stand = false;
                 crouch = true;
+            }
+            else if (Input.GetKeyUp(KeyCode.S)) //Standing
+            {
+                stand = true;
+                crouch = false;
             }
         }
 
@@ -80,7 +86,7 @@ public class PlayerController : MonoBehaviour
                 stand = false;
                 crouch = true;
             }
-            else //Standing
+            else if (Input.GetKeyUp(KeyCode.DownArrow)) //Standing
             {
                 stand = true;
                 crouch = false;
