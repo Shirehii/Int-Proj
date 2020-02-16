@@ -11,7 +11,9 @@ public class Movement : MonoBehaviour
     //Physics variables
     private float baseSpeed;
     public bool isGrounded; //for jumping
-    public bool isFlying; //for other mechanics
+
+    //Powerup variables
+    public bool canDoubleJump;
 
     private void Awake()
     {
@@ -56,6 +58,10 @@ public class Movement : MonoBehaviour
                 rb.AddForce(new Vector2(0, pc.jmpSpd));
                 isGrounded = false;
             }
+            else if (canDoubleJump)
+            {
+                rb.AddForce(new Vector2(0, pc.jmpSpd));
+            }
         }
     }
 
@@ -67,11 +73,12 @@ public class Movement : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit2D(Collision2D col) //GroundCheck the Sequel(tm)
+    private void OnTriggerEnter2D(Collider2D trigger)
     {
-        if (col.gameObject.tag == "Platform")
+        if (trigger.gameObject.tag == "DoubleJump")
         {
-            isFlying = true;
+            Destroy(trigger.gameObject);
+            canDoubleJump = true;
         }
     }
 
