@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public float plrSpd;
     public float jmpSpd;
     public Movement mvmnt;
+    public PlayerCombat comb;
 
     //movement variables
     public int direction;
@@ -14,6 +15,8 @@ public class PlayerController : MonoBehaviour
     public bool crouch = false;
     public bool stand = false;
     public bool slam = false;
+    public bool attackPlr1 = false;
+    public bool attackPlr2 = false;
 
     private void Awake()
     {
@@ -62,6 +65,11 @@ public class PlayerController : MonoBehaviour
             {
                 slam = true;
             }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                attackPlr1 = true;
+            }
         }
 
         //--PLAYER 2 INPUTS--
@@ -102,6 +110,11 @@ public class PlayerController : MonoBehaviour
             {
                 slam = true;
             }
+
+            if (Input.GetKeyDown(KeyCode.RightShift))
+            {
+                attackPlr2 = true;
+            }
         }
     }
 
@@ -132,6 +145,17 @@ public class PlayerController : MonoBehaviour
         {
             mvmnt.GroundSlam();
         }
+
+        if (attackPlr1)
+        {
+            comb.AttackingForPlayer1();
+        }
+
+        if (attackPlr2)
+        {
+            comb.AttackingForPlayer2();
+        }
+
     }
 
     //F
