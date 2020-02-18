@@ -10,9 +10,7 @@ public class Movement : MonoBehaviour
 
     //Physics variables
     private float baseSpeed;
-    public int isGrounded = 0; //for jumping
-
-    //Powerup variables
+    public int jumpCount = 0; //for jumping
     public bool canDoubleJump;
 
     private void Awake()
@@ -33,7 +31,7 @@ public class Movement : MonoBehaviour
 
     public void Crouch() //Crouching
     {
-        if (isGrounded == 0)
+        if (jumpCount == 0)
         {
             pc.plrSpd = pc.plrSpd - baseSpeed * 80/100;
             pc.crouch = false;
@@ -42,7 +40,7 @@ public class Movement : MonoBehaviour
 
     public void GroundSlam() //Ground Slam
     {
-        if (isGrounded > 0)
+        if (jumpCount > 0)
         {
             rb.velocity = new Vector2(0, pc.plrSpd * -3);;
             pc.slam = false;
@@ -57,17 +55,25 @@ public class Movement : MonoBehaviour
         }
     }
 
+    public void Flip() //Flipping the sprite
+    {
+        Vector3 Scale = transform.localScale;
+        Scale.x *= -1;
+        transform.localScale = Scale;
+        pc.flip = false;
+    }
+
     public void Jump() //Jumping
     {
         if (pc.jump == true)
         {
-            if (isGrounded == 0)
+            if (jumpCount == 0)
             {
                 rb.AddForce(new Vector2(0, pc.jmpSpd));
-                isGrounded = 1;
+                jumpCount = 1;
                 canDoubleJump = true;
             }
-            else if (isGrounded == 1)
+            else if (jumpCount == 1)
             {
                 DoubleJump();
             }
@@ -77,11 +83,11 @@ public class Movement : MonoBehaviour
 
     public void DoubleJump() //Double Jumping
     {   
-        if (isGrounded == 1 && canDoubleJump)
+        if (jumpCount == 1 && canDoubleJump)
         {
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(new Vector2(0, pc.jmpSpd));
-            isGrounded = 2;
+            jumpCount = 2;
             canDoubleJump = false;
         }
     }
@@ -90,7 +96,7 @@ public class Movement : MonoBehaviour
     {
         if (col.gameObject.tag == "Platform")
         {
-            isGrounded = 0;
+            jumpCount = 0;
             canDoubleJump = false;
         }
     }

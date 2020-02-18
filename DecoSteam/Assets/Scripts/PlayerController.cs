@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
 
     //movement variables
     public int direction;
+    public int lastDirectionPressed = 1;
+    public bool flip = false;
     public bool jump = false;
     public bool crouch = false;
     public bool stand = false;
@@ -47,18 +49,18 @@ public class PlayerController : MonoBehaviour
                 jump = true;
             }
 
-            if (Input.GetKeyDown(KeyCode.S) && mvmnt.isGrounded == 0) //Crouch
+            if (Input.GetKeyDown(KeyCode.S) && mvmnt.jumpCount == 0) //Crouch
             {
                 stand = false;
                 crouch = true;
             }
-            else if (Input.GetKeyUp(KeyCode.S) && mvmnt.isGrounded == 0) //Standing
+            else if (Input.GetKeyUp(KeyCode.S) && mvmnt.jumpCount == 0) //Standing
             {
                 stand = true;
                 crouch = false;
             }
 
-            if (Input.GetKey(KeyCode.S) && mvmnt.isGrounded > 0) //Ground Slam
+            if (Input.GetKey(KeyCode.S) && mvmnt.jumpCount > 0) //Ground Slam
             {
                 slam = true;
             }
@@ -87,21 +89,27 @@ public class PlayerController : MonoBehaviour
                 jump = true;
             }
 
-            if (Input.GetKeyDown(KeyCode.DownArrow) && mvmnt.isGrounded == 0) //Crouch
+            if (Input.GetKeyDown(KeyCode.DownArrow) && mvmnt.jumpCount == 0) //Crouch
             {
                 stand = false;
                 crouch = true;
             }
-            else if (Input.GetKeyUp(KeyCode.DownArrow) && mvmnt.isGrounded == 0) //Standing
+            else if (Input.GetKeyUp(KeyCode.DownArrow) && mvmnt.jumpCount == 0) //Standing
             {
                 stand = true;
                 crouch = false;
             }
 
-            if (Input.GetKey(KeyCode.DownArrow) && mvmnt.isGrounded > 0) //Ground Slam
+            if (Input.GetKey(KeyCode.DownArrow) && mvmnt.jumpCount > 0) //Ground Slam
             {
                 slam = true;
             }
+        }
+
+        if (Input.GetAxisRaw("Horizontal") != 0 && direction != lastDirectionPressed) //For flipping the player sprite
+        {
+            flip = true;
+            lastDirectionPressed = direction;
         }
     }
 
@@ -111,6 +119,10 @@ public class PlayerController : MonoBehaviour
         if (direction != 0)
         {
             mvmnt.Move();
+            if (flip)
+            {
+                mvmnt.Flip();
+            }
         }
 
         if (jump)
