@@ -431,7 +431,7 @@ GameObject:
   - component: {fileID: 1173197728}
   - component: {fileID: 1173197726}
   - component: {fileID: 1173197727}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player 2
   m_TagString: Player2
   m_Icon: {fileID: 0}
@@ -457,6 +457,7 @@ MonoBehaviour:
   jump: 0
   crouch: 0
   stand: 0
+  slam: 0
 --- !u!114 &1173197727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -694,7 +695,7 @@ GameObject:
   - component: {fileID: 2023852599}
   - component: {fileID: 2023852600}
   - component: {fileID: 2023852597}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player 1
   m_TagString: Player1
   m_Icon: {fileID: 0}
@@ -836,3 +837,4 @@ MonoBehaviour:
   jump: 0
   crouch: 0
   stand: 0
+  slam: 0

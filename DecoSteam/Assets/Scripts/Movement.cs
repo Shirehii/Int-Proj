@@ -75,7 +75,7 @@ public class Movement : MonoBehaviour
         }
     }
 
-    public void DoubleJump()
+    public void DoubleJump() //Double Jumping
     {   
         if (isGrounded == 1 && canDoubleJump)
         {
