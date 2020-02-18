@@ -10,7 +10,7 @@ public class Movement : MonoBehaviour
 
     //Physics variables
     private float baseSpeed;
-    public bool isGrounded; //for jumping
+    public int isGrounded = 0; //for jumping
 
     //Powerup variables
     public bool canDoubleJump;
@@ -33,10 +33,19 @@ public class Movement : MonoBehaviour
 
     public void Crouch() //Crouching
     {
-        if (isGrounded)
+        if (isGrounded == 0)
         {
             pc.plrSpd = pc.plrSpd - baseSpeed * 80/100;
             pc.crouch = false;
+        }
+    }
+
+    public void GroundSlam() //Ground Slam
+    {
+        if (isGrounded > 0)
+        {
+            rb.velocity = new Vector2(0, pc.plrSpd * -3);;
+            pc.slam = false;
         }
     }
 
@@ -52,16 +61,28 @@ public class Movement : MonoBehaviour
     {
         if (pc.jump == true)
         {
+            if (isGrounded == 0)
+            {
+                rb.AddForce(new Vector2(0, pc.jmpSpd));
+                isGrounded = 1;
+                canDoubleJump = true;
+            }
+            else if (isGrounded == 1)
+            {
+                DoubleJump();
+            }
             pc.jump = false;
-            if (isGrounded == true)
-            {
-                rb.AddForce(new Vector2(0, pc.jmpSpd));
-                isGrounded = false;
-            }
-            else if (canDoubleJump)
-            {
-                rb.AddForce(new Vector2(0, pc.jmpSpd));
-            }
+        }
+    }
+
+    public void DoubleJump()
+    {   
+        if (isGrounded == 1 && canDoubleJump)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, 0);
+            rb.AddForce(new Vector2(0, pc.jmpSpd));
+            isGrounded = 2;
+            canDoubleJump = false;
         }
     }
 
@@ -69,16 +90,8 @@ public class Movement : MonoBehaviour
     {
         if (col.gameObject.tag == "Platform")
         {
-            isGrounded = true;
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D trigger)
-    {
-        if (trigger.gameObject.tag == "DoubleJump")
-        {
-            Destroy(trigger.gameObject);
-            canDoubleJump = true;
+            isGrounded = 0;
+            canDoubleJump = false;
         }
     }
 
