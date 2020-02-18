@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public bool jump = false;
     public bool crouch = false;
     public bool stand = false;
+    public bool slam = false;
 
     private void Awake()
     {
@@ -41,20 +42,25 @@ public class PlayerController : MonoBehaviour
                 direction = 0;
             }
 
-            if (Input.GetKey(KeyCode.W)) //Jump
+            if (Input.GetKeyDown(KeyCode.W)) //Jump
             {
                 jump = true;
             }
 
-            if (Input.GetKeyDown(KeyCode.S) && mvmnt.isGrounded) //Crouch
+            if (Input.GetKeyDown(KeyCode.S) && mvmnt.isGrounded == 0) //Crouch
             {
                 stand = false;
                 crouch = true;
             }
-            else if (Input.GetKeyUp(KeyCode.S) && mvmnt.isGrounded) //Standing
+            else if (Input.GetKeyUp(KeyCode.S) && mvmnt.isGrounded == 0) //Standing
             {
                 stand = true;
                 crouch = false;
+            }
+
+            if (Input.GetKey(KeyCode.S) && mvmnt.isGrounded > 0) //Ground Slam
+            {
+                slam = true;
             }
         }
 
@@ -76,20 +82,25 @@ public class PlayerController : MonoBehaviour
                 direction = 0;
             }
 
-            if (Input.GetKey(KeyCode.UpArrow)) //Jump
+            if (Input.GetKeyDown(KeyCode.UpArrow)) //Jump
             {
                 jump = true;
             }
 
-            if (Input.GetKeyDown(KeyCode.DownArrow) && mvmnt.isGrounded) //Crouch
+            if (Input.GetKeyDown(KeyCode.DownArrow) && mvmnt.isGrounded == 0) //Crouch
             {
                 stand = false;
                 crouch = true;
             }
-            else if (Input.GetKeyUp(KeyCode.DownArrow) && !crouch) //Standing
+            else if (Input.GetKeyUp(KeyCode.DownArrow) && mvmnt.isGrounded == 0) //Standing
             {
                 stand = true;
                 crouch = false;
+            }
+
+            if (Input.GetKey(KeyCode.DownArrow) && mvmnt.isGrounded > 0) //Ground Slam
+            {
+                slam = true;
             }
         }
     }
@@ -115,6 +126,11 @@ public class PlayerController : MonoBehaviour
         if (stand)
         {
             mvmnt.Stand();
+        }
+
+        if (slam)
+        {
+            mvmnt.GroundSlam();
         }
     }
 

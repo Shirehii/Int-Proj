@@ -455,6 +455,8 @@ MonoBehaviour:
   mvmnt: {fileID: 0}
   direction: 0
   jump: 0
+  crouch: 0
+  stand: 0
 --- !u!114 &1173197727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -469,6 +471,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   pc: {fileID: 0}
+  isGrounded: 0
+  canDoubleJump: 0
 --- !u!70 &1173197728
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -774,6 +778,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   pc: {fileID: 0}
+  isGrounded: 0
+  canDoubleJump: 0
 --- !u!50 &2023852598
 Rigidbody2D:
   serializedVersion: 4
@@ -828,3 +834,5 @@ MonoBehaviour:
   mvmnt: {fileID: 0}
   direction: 0
   jump: 0
+  crouch: 0
+  stand: 0
