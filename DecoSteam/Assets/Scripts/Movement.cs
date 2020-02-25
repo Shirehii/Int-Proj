@@ -108,6 +108,11 @@ public class Movement : MonoBehaviour
             Destroy(trigger.gameObject);
             pc.plrSpd = pc.plrSpd * 2;
         }
+        
+        if (trigger.gameObject.tag == "Death")
+        {
+            Destroy(gameObject);
+        }
     }
 
     //F
