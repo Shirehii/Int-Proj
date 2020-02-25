@@ -101,5 +101,14 @@ public class Movement : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D trigger)
+    {
+        if (trigger.gameObject.tag == "SpeedBoost")
+        {
+            Destroy(trigger.gameObject);
+            pc.plrSpd = pc.plrSpd * 2;
+        }
+    }
+
     //F
 }
