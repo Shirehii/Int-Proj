@@ -148,12 +148,12 @@ public class PlayerController : MonoBehaviour
 
         if (attackPlr1)
         {
-            comb.AttackingForPlayer1();
+            comb.AttackForPlayer1();
         }
 
         if (attackPlr2)
         {
-            comb.AttackingForPlayer2();
+            comb.AttackForPlayer2();
         }
 
     }
