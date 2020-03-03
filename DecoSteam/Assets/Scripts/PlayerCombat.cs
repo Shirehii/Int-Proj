@@ -37,13 +37,19 @@ public class PlayerCombat : MonoBehaviour
         pc = gameObject.GetComponent<PlayerController>();
     }
 
-    public IEnumerator Attack()
+    public void Attack()
     {
         gameObject.SetActive(attp);
 
-        pc.attackPlr1 = false;
-        pc.attackPlr2 = false;
+        
     }
+
+    public void HitCheck()
+    {
+
+
+    }
+
 
     public void TakeDamageOnPlayer1(float Player2Damage)
     {
