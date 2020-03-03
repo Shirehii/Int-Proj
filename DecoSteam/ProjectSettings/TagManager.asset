@@ -9,6 +9,8 @@ TagManager:
   - Player2
   - SpeedBoost
   - Death
+  - Attp1
+  - Attp2
   layers:
   - Default
   - TransparentFX
