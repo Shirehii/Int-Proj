@@ -39,16 +39,12 @@ public class PlayerCombat : MonoBehaviour
         if (gameObject.tag == "Player1")
         {
             attp1.SetActive(true);
-            pc.attackPlr = false;
         }
-        
-
         if (gameObject.tag == "Player2")
         {
             attp2.SetActive(true);
-            pc.attackPlr = false;
         }
-        
+        pc.attackPlr = false;
     }
 
 
