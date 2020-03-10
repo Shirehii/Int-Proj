@@ -7,6 +7,7 @@ public class HitCheck : MonoBehaviour
 	public PlayerController pc;
     public Rigidbody2D colly;
     public int pow = 5000;
+    public bool enemyShielded; //for shield mechanic
 
 	public void Awake()
 	{
@@ -20,21 +21,26 @@ public class HitCheck : MonoBehaviour
         }
 	}
 
-    public void OnTriggerEnter2D(Collider2D col) 
+    public void OnTriggerEnter2D(Collider2D trigger) 
     {
-        if (col.gameObject.layer == 8)
+        if (trigger.gameObject.layer == 8)
         {
-            colly = col.gameObject.GetComponent<Rigidbody2D>();
+            enemyShielded = trigger.gameObject.GetComponent<PlayerCombat>().shielded;
+            if (!enemyShielded)
+            {
+                colly = trigger.gameObject.GetComponent<Rigidbody2D>();
 
-            if (pc.lastDirectionPressed == 1)
-            {
-                colly.AddForce(new Vector2(pow, 0));
-            }
-            if (pc.lastDirectionPressed == -1)
-            {
-                colly.AddForce(new Vector2(-pow, 0));
+                if (pc.lastDirectionPressed == 1)
+                {
+                    colly.AddForce(new Vector2(pow, 0));
+                }
+                if (pc.lastDirectionPressed == -1)
+                {
+                    colly.AddForce(new Vector2(-pow, 0));
+                }
             }
         }
-        gameObject.SetActive(false);
     }
+
+    //F
 }

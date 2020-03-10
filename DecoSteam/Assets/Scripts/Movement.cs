@@ -33,7 +33,7 @@ public class Movement : MonoBehaviour
     {
         if (jumpCount == 0)
         {
-            pc.plrSpd = pc.plrSpd - baseSpeed * 80/100;
+            pc.plrSpd -= baseSpeed * 80/100;
             pc.crouch = false;
         }
     }
@@ -103,13 +103,13 @@ public class Movement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D trigger)
     {
-        if (trigger.gameObject.tag == "SpeedBoost")
+        if (trigger.gameObject.tag == "SpeedBoost") //Speed Boost
         {
             Destroy(trigger.gameObject);
-            pc.plrSpd = pc.plrSpd * 2;
+            pc.plrSpd *= 2;
         }
-        
-        if (trigger.gameObject.tag == "Death")
+
+        if (trigger.gameObject.tag == "Death") //Fall zone
         {
             Destroy(gameObject);
         }

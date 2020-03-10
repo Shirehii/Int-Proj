@@ -16,14 +16,25 @@ public class PlayerCombat : MonoBehaviour
     public PlayerController pc;
     public HitCheck hc;
 
+    public bool shielded = false;
+
 
     public void Awake()
     {
         pc = gameObject.GetComponent<PlayerController>();
 
         attp1 = GameObject.FindGameObjectWithTag("Attp1");
+        if (gameObject.tag == "Player1")
+        {
+            hc = attp1.GetComponent<HitCheck>();
+        }
         attp2 = GameObject.FindGameObjectWithTag("Attp2");
+        if (gameObject.tag == "Player2")
+        {
+            hc = attp2.GetComponent<HitCheck>();
+        }
     }
+
     private void Start()
     {
         Player1HPCurrent = Player1HPMax;
@@ -39,12 +50,20 @@ public class PlayerCombat : MonoBehaviour
         if (gameObject.tag == "Player1")
         {
             attp1.SetActive(true);
-            TakeDamageOnPlayer2(20f);
+            if (!hc.enemyShielded)
+            {
+                TakeDamageOnPlayer2(20f);
+            }
+            attp1.SetActive(false);
         }
         if (gameObject.tag == "Player2")
         {
             attp2.SetActive(true);
-            TakeDamageOnPlayer1(20f);
+            if (!hc.enemyShielded)
+            {
+                TakeDamageOnPlayer1(20f);
+            }
+            attp2.SetActive(false);
         }
         pc.attackPlr = false;
     }
@@ -68,7 +87,6 @@ public class PlayerCombat : MonoBehaviour
         {
             Die();
         }
-
     }
 
     public void Die()
@@ -76,5 +94,14 @@ public class PlayerCombat : MonoBehaviour
         Debug.Log("I have died.");
     }
 
+    private void OnTriggerEnter2D(Collider2D trigger)
+    {
+        if (trigger.gameObject.tag == "Shield") //Shield
+        {
+            Destroy(trigger.gameObject);
+            shielded = true;
+        }
+    }
+
     //F
-}
+    }
