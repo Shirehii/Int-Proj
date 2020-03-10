@@ -65,8 +65,10 @@
     <Compile Include="Assets\Scripts\Animations.cs" />
     <Compile Include="Assets\Scripts\ExitGame.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\HitCheck.cs" />
     <Compile Include="Assets\Scripts\LoadingScene.cs" />
     <Compile Include="Assets\Scripts\Movement.cs" />
+    <Compile Include="Assets\Scripts\PlayerCombat.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/AMARGA200/Documents/GitHub/Int-Proj/DecoSteam/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

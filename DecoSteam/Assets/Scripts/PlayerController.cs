@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public float plrSpd;
     public float jmpSpd;
     public Movement mvmnt;
+    public PlayerCombat comb;
 
     //movement variables
     public int direction;
@@ -16,11 +17,13 @@ public class PlayerController : MonoBehaviour
     public bool crouch = false;
     public bool stand = false;
     public bool slam = false;
+    public bool attackPlr = false;
 
     private void Awake()
     {
         //Get Components
         mvmnt = gameObject.GetComponent<Movement>();
+        comb = gameObject.GetComponent<PlayerCombat>();
     }
 
     //Player Input
@@ -64,6 +67,11 @@ public class PlayerController : MonoBehaviour
             {
                 slam = true;
             }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                attackPlr = true;
+            }
         }
 
         //--PLAYER 2 INPUTS--
@@ -104,6 +112,11 @@ public class PlayerController : MonoBehaviour
             {
                 slam = true;
             }
+
+            if (Input.GetKeyDown(KeyCode.RightShift))
+            {
+                attackPlr = true;
+            }
         }
 
         if (Input.GetAxisRaw("Horizontal") != 0 && direction != lastDirectionPressed) //For flipping the player sprite
@@ -143,6 +156,11 @@ public class PlayerController : MonoBehaviour
         if (slam)
         {
             mvmnt.GroundSlam();
+        }
+
+        if (attackPlr)
+        {
+            comb.Attackplr();
         }
     }
 

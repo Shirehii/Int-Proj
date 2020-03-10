@@ -9,6 +9,9 @@ TagManager:
   - Player2
   - SpeedBoost
   - Death
+  - Attp1
+  - Attp2
+  - Shield
   layers:
   - Default
   - TransparentFX
