@@ -50,7 +50,7 @@ public class PlayerCombat : MonoBehaviour
         if (gameObject.tag == "Player1")
         {
             attp1.SetActive(true);
-            if (!hc.enemyShielded)
+            if (hc.enemyShielded)
             {
                 TakeDamageOnPlayer2(20f);
             }
@@ -59,7 +59,7 @@ public class PlayerCombat : MonoBehaviour
         if (gameObject.tag == "Player2")
         {
             attp2.SetActive(true);
-            if (!hc.enemyShielded)
+            if (hc.enemyShielded)
             {
                 TakeDamageOnPlayer1(20f);
             }

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3057725181182902375}
   - component: {fileID: 3057725181182902376}
   - component: {fileID: 3057725181182902373}
+  - component: {fileID: 4025285627783489405}
   - component: {fileID: 3057725181182902377}
   - component: {fileID: 3057725181182902378}
   m_Layer: 8
@@ -33,7 +34,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 13.7, y: 15.2, z: 0}
   m_LocalScale: {x: 2.2, y: 6.4, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 2082365586208175139}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -138,6 +140,7 @@ MonoBehaviour:
   plrSpd: 20
   jmpSpd: 3000
   mvmnt: {fileID: 0}
+  comb: {fileID: 0}
   direction: 0
   lastDirectionPressed: 1
   flip: 0
@@ -145,6 +148,7 @@ MonoBehaviour:
   crouch: 0
   stand: 0
   slam: 0
+  attackPlr: 0
 --- !u!114 &3057725181182902373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,6 +165,27 @@ MonoBehaviour:
   pc: {fileID: 0}
   jumpCount: 0
   canDoubleJump: 0
+--- !u!114 &4025285627783489405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3057725181182902370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 426211647afeb0444ac153cd7e39efa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player1HPMax: 100
+  Player1HPCurrent: 0
+  Player2HPMax: 100
+  Player2HPCurrent: 0
+  attp1: {fileID: 0}
+  attp2: {fileID: 0}
+  pc: {fileID: 0}
+  hc: {fileID: 0}
+  shielded: 0
 --- !u!95 &3057725181182902377
 Animator:
   serializedVersion: 3
@@ -169,7 +194,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3057725181182902370}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
@@ -187,9 +212,83 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3057725181182902370}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c141acea9345427408458ea9c6c10285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pc: {fileID: 0}
+--- !u!1 &8467612007897507026
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2082365586208175139}
+  - component: {fileID: 7184725523299192097}
+  - component: {fileID: 6652239364518823590}
+  m_Layer: 8
+  m_Name: AttackPoint1
+  m_TagString: Attp1
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2082365586208175139
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8467612007897507026}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3057725181182902372}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7184725523299192097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8467612007897507026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a16ca7df021b16948b1c16e0ea044a21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pc: {fileID: 0}
+  colly: {fileID: 0}
+  pow: 5000
+  enemyShielded: 0
+--- !u!61 &6652239364518823590
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8467612007897507026}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 1.25, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.55, y: 0.5}
+  m_EdgeRadius: 0
