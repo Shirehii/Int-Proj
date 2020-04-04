@@ -122,8 +122,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0014188614, y: 0.003342554}
-  m_Size: {x: 1.0810424, y: 1.0125096}
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1, y: 1}
   m_Direction: 0
 --- !u!114 &177307349090070627
 MonoBehaviour:
@@ -163,6 +163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   pc: {fileID: 0}
+  comb: {fileID: 0}
   jumpCount: 0
   canDoubleJump: 0
 --- !u!114 &1965498855429562402
@@ -181,11 +182,11 @@ MonoBehaviour:
   Player1HPCurrent: 0
   Player2HPMax: 100
   Player2HPCurrent: 0
-  attp1: {fileID: 0}
-  attp2: {fileID: 0}
+  attp: {fileID: 0}
   pc: {fileID: 0}
   hc: {fileID: 0}
   shielded: 0
+  dead: 0
 --- !u!95 &177307349090070617
 Animator:
   serializedVersion: 3
@@ -229,7 +230,7 @@ GameObject:
   - component: {fileID: 6813097085370693058}
   - component: {fileID: 7539181388141328456}
   - component: {fileID: 3945711559461485300}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: AttackPoint2
   m_TagString: Attp2
   m_Icon: {fileID: 0}
@@ -263,7 +264,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.25, y: 0}
+  m_Offset: {x: 1.3, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -274,7 +275,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.55, y: 0.5}
+  m_Size: {x: 1.3, y: 0.5}
   m_EdgeRadius: 0
 --- !u!114 &3945711559461485300
 MonoBehaviour:
@@ -289,6 +290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pc: {fileID: 0}
+  comb: {fileID: 0}
   colly: {fileID: 0}
   pow: 5000
   enemyShielded: 0
