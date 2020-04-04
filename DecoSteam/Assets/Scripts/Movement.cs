@@ -8,6 +8,8 @@ public class Movement : MonoBehaviour
     public Rigidbody2D rb;
     public PlayerController pc;
 
+    public PlayerCombat comb;
+
     //Physics variables
     private float baseSpeed;
     public int jumpCount = 0; //for jumping
@@ -18,6 +20,8 @@ public class Movement : MonoBehaviour
         //Get Components
         rb = gameObject.GetComponent<Rigidbody2D>();
         pc = gameObject.GetComponent<PlayerController>();
+
+        comb = GetComponent<PlayerCombat>();
 
         //Initialize
         baseSpeed = pc.plrSpd;
@@ -111,6 +115,7 @@ public class Movement : MonoBehaviour
 
         if (trigger.gameObject.tag == "Death") //Fall zone
         {
+            comb.dead = true;
             Destroy(gameObject);
         }
     }

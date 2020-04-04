@@ -17,6 +17,7 @@ public class PlayerCombat : MonoBehaviour
     public HitCheck hc;
 
     public bool shielded = false;
+    public bool dead = false;
 
 
     public void Awake()
@@ -50,7 +51,7 @@ public class PlayerCombat : MonoBehaviour
         if (gameObject.tag == "Player1")
         {
             attp1.SetActive(true);
-            if (!hc.enemyShielded)
+            if (hc.enemyShielded)
             {
                 TakeDamageOnPlayer2(20f);
             }
@@ -59,7 +60,7 @@ public class PlayerCombat : MonoBehaviour
         if (gameObject.tag == "Player2")
         {
             attp2.SetActive(true);
-            if (!hc.enemyShielded)
+            if (hc.enemyShielded)
             {
                 TakeDamageOnPlayer1(20f);
             }
@@ -92,6 +93,7 @@ public class PlayerCombat : MonoBehaviour
     public void Die()
     {
         Debug.Log("I have died.");
+        dead = true;
     }
 
     private void OnTriggerEnter2D(Collider2D trigger)
