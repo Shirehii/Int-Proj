@@ -122,8 +122,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.007218664, y: -0.0019390881}
-  m_Size: {x: 0.97647274, y: 0.9934956}
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1, y: 1}
   m_Direction: 0
 --- !u!114 &3057725181182902376
 MonoBehaviour:
@@ -163,6 +163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   pc: {fileID: 0}
+  comb: {fileID: 0}
   jumpCount: 0
   canDoubleJump: 0
 --- !u!114 &4025285627783489405
@@ -181,11 +182,11 @@ MonoBehaviour:
   Player1HPCurrent: 0
   Player2HPMax: 100
   Player2HPCurrent: 0
-  attp1: {fileID: 0}
-  attp2: {fileID: 0}
+  attp: {fileID: 0}
   pc: {fileID: 0}
   hc: {fileID: 0}
   shielded: 0
+  dead: 0
 --- !u!95 &3057725181182902377
 Animator:
   serializedVersion: 3
@@ -227,9 +228,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2082365586208175139}
-  - component: {fileID: 7184725523299192097}
   - component: {fileID: 6652239364518823590}
-  m_Layer: 8
+  - component: {fileID: 7184725523299192097}
+  m_Layer: 0
   m_Name: AttackPoint1
   m_TagString: Attp1
   m_Icon: {fileID: 0}
@@ -250,22 +251,6 @@ Transform:
   m_Father: {fileID: 3057725181182902372}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7184725523299192097
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8467612007897507026}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a16ca7df021b16948b1c16e0ea044a21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pc: {fileID: 0}
-  colly: {fileID: 0}
-  pow: 5000
-  enemyShielded: 0
 --- !u!61 &6652239364518823590
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -279,7 +264,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.25, y: 0}
+  m_Offset: {x: 1.3, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -290,5 +275,22 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.55, y: 0.5}
+  m_Size: {x: 1.3, y: 0.5}
   m_EdgeRadius: 0
+--- !u!114 &7184725523299192097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8467612007897507026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a16ca7df021b16948b1c16e0ea044a21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pc: {fileID: 0}
+  comb: {fileID: 0}
+  colly: {fileID: 0}
+  pow: 5000
+  enemyShielded: 0

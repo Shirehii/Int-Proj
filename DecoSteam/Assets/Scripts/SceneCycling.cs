@@ -64,23 +64,18 @@ public class SceneCycling : MonoBehaviour
                 Debug.Log("left win");
                 break;
             case 1:
-                Debug.Log("switch scene");
                 sceneLoader.LoadScene("Docks");
                 break;
             case 2:
-                Debug.Log("switch scene");
                 sceneLoader.LoadScene("Sewers");
                 break;
             case 3:
-                Debug.Log("switch scene");
                 sceneLoader.LoadScene("CityCentre");
                 break;
             case 4:
-                Debug.Log("switch scene");
                 sceneLoader.LoadScene("Market");
                 break;
             case 5:
-                Debug.Log("switch scene");
                 sceneLoader.LoadScene("Blimp");
                 break;
             case 6:

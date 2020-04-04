@@ -15,6 +15,9 @@ public class Movement : MonoBehaviour
     public int jumpCount = 0; //for jumping
     public bool canDoubleJump;
 
+    //Powerup variables
+    public float timeLeftSpeed;
+
     private void Awake()
     {
         //Get Components
@@ -26,7 +29,19 @@ public class Movement : MonoBehaviour
         //Initialize
         baseSpeed = pc.plrSpd;
     }
-    
+
+    void Update()
+    {
+        if (timeLeftSpeed > 0)
+        {
+            timeLeftSpeed -= Time.deltaTime;
+        }
+        else if (timeLeftSpeed <= 0)
+        {
+            pc.plrSpd = baseSpeed;
+        }
+    }
+
     public void Stand() //Standing
     {
         pc.plrSpd = baseSpeed;
@@ -111,6 +126,8 @@ public class Movement : MonoBehaviour
         {
             Destroy(trigger.gameObject);
             pc.plrSpd *= 2;
+
+            timeLeftSpeed = 10.0f;
         }
 
         if (trigger.gameObject.tag == "Death") //Fall zone

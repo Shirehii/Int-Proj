@@ -22,8 +22,8 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         //Get Components
-        mvmnt = gameObject.GetComponent<Movement>();
-        comb = gameObject.GetComponent<PlayerCombat>();
+        mvmnt = GetComponent<Movement>();
+        comb = GetComponent<PlayerCombat>();
     }
 
     //Player Input

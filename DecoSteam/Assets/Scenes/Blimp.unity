@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 508932831}
   - component: {fileID: 508932832}
   - component: {fileID: 508932833}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Barrier1
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 579967066}
   - component: {fileID: 579967067}
   - component: {fileID: 579967068}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Barrier2
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -1347,11 +1347,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1144845251485812824, guid: 1cf922ddfec459f4d83383024bcd4337,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1787650892784980724, guid: 1cf922ddfec459f4d83383024bcd4337,
         type: 3}
       propertyPath: m_IsTrigger
@@ -1366,6 +1361,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size.y
       value: 20.433155
+      objectReference: {fileID: 0}
+    - target: {fileID: 1144845251485812824, guid: 1cf922ddfec459f4d83383024bcd4337,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1cf922ddfec459f4d83383024bcd4337, type: 3}
