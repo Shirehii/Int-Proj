@@ -17,6 +17,7 @@ public class PlayerCombat : MonoBehaviour
     public HitCheck hc;
 
     public bool shielded = false;
+    public bool dead = false;
 
 
     public void Awake()
@@ -92,6 +93,7 @@ public class PlayerCombat : MonoBehaviour
     public void Die()
     {
         Debug.Log("I have died.");
+        dead = true;
     }
 
     private void OnTriggerEnter2D(Collider2D trigger)
