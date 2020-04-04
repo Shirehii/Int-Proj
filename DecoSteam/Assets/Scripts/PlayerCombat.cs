@@ -15,6 +15,7 @@ public class PlayerCombat : MonoBehaviour
     public PlayerController pc;
     public HitCheck hc;
 
+    public float timeLeftShield;
     public bool shielded = false;
     public bool dead = false;
 
@@ -43,6 +44,17 @@ public class PlayerCombat : MonoBehaviour
         attp.SetActive(false);
     }
 
+    void Update()
+    {
+        if (timeLeftShield > 0)
+        {
+            timeLeftShield -= Time.deltaTime;
+        }
+        else if (timeLeftShield <= 0)
+        {
+            shielded = false;
+        }
+    }
 
     public void Attackplr()
     {
@@ -83,6 +95,8 @@ public class PlayerCombat : MonoBehaviour
         {
             Destroy(trigger.gameObject);
             shielded = true;
+            
+            timeLeftShield = 10.0f;
         }
     }
 
