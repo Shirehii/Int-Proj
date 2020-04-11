@@ -9,18 +9,21 @@ public class SceneCycling : MonoBehaviour
 
     public PlayerCombat comb1;
     public PlayerCombat comb2;
-    public string currentScene;
+    public string currentScene = null;
     public int turf;
     public LoadingScene sceneLoader;
 
     public void Awake()
     {
         //Get components
-        comb1 = GameObject.FindGameObjectWithTag("Player1").GetComponent<PlayerCombat>();
-        comb2 = GameObject.FindGameObjectWithTag("Player2").GetComponent<PlayerCombat>();
-        sceneLoader = GetComponent<LoadingScene>();
-
         currentScene = SceneManager.GetActiveScene().name; //get current scene name
+        Debug.Log(currentScene);
+        if (currentScene != "Main Menu")
+        {
+            comb1 = GameObject.FindGameObjectWithTag("Player1").GetComponent<PlayerCombat>();
+            comb2 = GameObject.FindGameObjectWithTag("Player2").GetComponent<PlayerCombat>();
+        }
+        sceneLoader = GetComponent<LoadingScene>();
 
         switch (currentScene) //Initialize turf points, to make sure they're correct
         {
@@ -44,15 +47,18 @@ public class SceneCycling : MonoBehaviour
 
     public void Update()
     {
-        if (comb1.dead) //RIGHT WIN
+        if (currentScene != "Main Menu")
         {
-            turf += 1;
-            SwitchScene();
-        }
-        else if (comb2.dead) //LEFT WIN
-        {
-            turf -= 1;
-            SwitchScene();
+            if (comb1.dead) //RIGHT WIN
+            {
+                turf += 1;
+                SwitchScene();
+            }
+            else if (comb2.dead) //LEFT WIN
+            {
+                turf -= 1;
+                SwitchScene();
+            }
         }
     }
 

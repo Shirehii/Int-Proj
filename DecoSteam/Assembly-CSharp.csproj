@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="Assets\Prefabs\!This Folder is for Objects that cross over between scenes.cs" />
     <Compile Include="Assets\Scripts\Animations.cs" />
+    <Compile Include="Assets\Scripts\AudioController.cs" />
     <Compile Include="Assets\Scripts\ExitGame.cs" />
     <Compile Include="Assets\Scripts\HitCheck.cs" />
     <Compile Include="Assets\Scripts\LoadingScene.cs" />
@@ -71,6 +72,8 @@
     <Compile Include="Assets\Scripts\PlayerCombat.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\SceneCycling.cs" />
+    <None Include="Assets\Audio\5 Action Chiptunes By Juhani Junkala\INFO.txt" />
+    <None Include="Assets\Audio\The Essential Retro Video Game Sound Effects Collection [512 sounds] By Juhani Junkala\INFO.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/yeet/Int-Proj/DecoSteam/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

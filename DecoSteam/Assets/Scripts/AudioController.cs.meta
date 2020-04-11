@@ -1,0 +1,31 @@
+fileFormatVersion: 2
+guid: 23b1e7a494ea0ac41a3e9a8b7db6d1fb
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - jumpAudio: {fileID: 8300000, guid: cfb2add435affa64584243a4d79a55e5, type: 3}
+  - doubleJumpAudio: {fileID: 8300000, guid: 4397216487547924fb0e63ce3f553acd, type: 3}
+  - damageAudio: {fileID: 8300000, guid: 07e8a8d5a05a97f4c8231095515f305b, type: 3}
+  - shieldDamageAudio: {fileID: 8300000, guid: 6a21409a45851ba4e90bb2cdabeff23d, type: 3}
+  - deathAudio: {fileID: 8300000, guid: 09c6d8efffca830408aafae64bac5d3b, type: 3}
+  - pickUpShieldAudio: {fileID: 8300000, guid: 756d28fcabf18cd439139c82ecdb9673, type: 3}
+  - pickUpSpeedAudio: {fileID: 8300000, guid: 242319c0fb8427847977cdbedd4a3583, type: 3}
+  - titleBGM: {fileID: 8300000, guid: a87c14261cf4b8f488bfd0b30d4547c9, type: 3}
+  - docksBGM: {fileID: 8300000, guid: 7a8b8623d99a5a04184feb7958742d5e, type: 3}
+  - middleLevelsBGM: {fileID: 8300000, guid: 443a46e76be4c02429fbce4339b75713, type: 3}
+  - blimpBGM: {fileID: 8300000, guid: 19fb4e74b6cccd242a83b1de53ec130f, type: 3}
+  - pc1: {instanceID: 0}
+  - pc2: {instanceID: 0}
+  - mvmnt1: {instanceID: 0}
+  - mvmnt2: {instanceID: 0}
+  - comb1: {instanceID: 0}
+  - comb2: {instanceID: 0}
+  - hc1: {instanceID: 0}
+  - hc2: {instanceID: 0}
+  - source: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
