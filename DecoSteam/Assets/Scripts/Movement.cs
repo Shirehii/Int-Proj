@@ -84,7 +84,7 @@ public class Movement : MonoBehaviour
 
     public void Jump() //Jumping
     {
-        if (pc.jump == true)
+        if (pc.jump)
         {
             if (jumpCount == 0)
             {
@@ -133,7 +133,7 @@ public class Movement : MonoBehaviour
         if (trigger.gameObject.tag == "Death") //Fall zone
         {
             comb.dead = true;
-            Destroy(gameObject);
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<SceneCycling>().TurfChange();
         }
     }
 

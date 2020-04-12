@@ -45,21 +45,18 @@ public class SceneCycling : MonoBehaviour
         }
     }
 
-    public void Update()
+    public void TurfChange()
     {
-        if (currentScene != "Main Menu")
-        {
-            if (comb1.dead) //RIGHT WIN
-            {
-                turf += 1;
-                SwitchScene();
-            }
-            else if (comb2.dead) //LEFT WIN
-            {
-                turf -= 1;
-                SwitchScene();
-            }
-        }
+         if (comb1.dead) //RIGHT WIN
+         {
+             turf += 1;
+             SwitchScene();
+         }
+         else if (comb2.dead) //LEFT WIN
+         {
+             turf -= 1;
+             SwitchScene();
+         }
     }
 
     private void SwitchScene()

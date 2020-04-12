@@ -87,6 +87,7 @@ public class PlayerCombat : MonoBehaviour
     {
         Debug.Log("I have died.");
         dead = true;
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<SceneCycling>().TurfChange();
     }
 
     private void OnTriggerEnter2D(Collider2D trigger)

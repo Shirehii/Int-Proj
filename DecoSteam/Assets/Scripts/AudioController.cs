@@ -13,12 +13,6 @@ public class AudioController : MonoBehaviour
     public AudioClip pickUpShieldAudio;
     public AudioClip pickUpSpeedAudio;
 
-    //BGM clips
-    public AudioClip titleBGM;
-    public AudioClip docksBGM;
-    public AudioClip middleLevelsBGM;
-    public AudioClip blimpBGM;
-
     //Scripts for checking what the players are doing
     public PlayerController pc1;
     public PlayerController pc2;
@@ -51,38 +45,21 @@ public class AudioController : MonoBehaviour
 
         //Get AudioSource
         source = GetComponent<AudioSource>();
-
-
-        //BGM swapping
-        if (sceneCycle.currentScene == "Main Menu")
-        {
-            source.PlayOneShot(titleBGM);
-        }
-        else if (sceneCycle.turf == 1)
-        {
-            source.PlayOneShot(docksBGM);
-        }
-        else if (sceneCycle.turf >= 2 && sceneCycle.turf < 5)
-        {
-            source.PlayOneShot(middleLevelsBGM);
-        }
-        else if (sceneCycle.turf == 5)
-        {
-            source.PlayOneShot(blimpBGM);
-        }
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (sceneCycle.currentScene != "Main Menu")
         {
             //Jumping Audio
             if ((pc1.jump && mvmnt1.jumpCount == 0) || (pc2.jump && mvmnt2.jumpCount == 0)) //Single jump
             {
+                Debug.Log("1jump");
                 source.PlayOneShot(jumpAudio);
             }
             if ((pc1.jump && mvmnt1.jumpCount == 1) || (pc2.jump && mvmnt2.jumpCount == 1)) //Double Jump
             {
+                Debug.Log("2jump");
                 source.PlayOneShot(doubleJumpAudio);
             }
 
@@ -98,8 +75,38 @@ public class AudioController : MonoBehaviour
             if (comb1.dead || comb2.dead) //Dying
             {
                 source.PlayOneShot(deathAudio);
-                comb1.dead = false;
-                comb2.dead = false;
+            }
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (sceneCycle.currentScene != "Main Menu")
+        {
+            //Jumping Audio
+            if ((pc1.jump && mvmnt1.jumpCount == 0) || (pc2.jump && mvmnt2.jumpCount == 0)) //Single jump
+            {
+                Debug.Log("1jump");
+                source.PlayOneShot(jumpAudio);
+            }
+            if ((pc1.jump && mvmnt1.jumpCount == 1) || (pc2.jump && mvmnt2.jumpCount == 1)) //Double Jump
+            {
+                Debug.Log("2jump");
+                source.PlayOneShot(doubleJumpAudio);
+            }
+
+            //Attacking Audio
+            if ((pc1.attackPlr && !hc1.enemyShielded) || (pc2.attackPlr && !hc2.enemyShielded)) //Basic Attack
+            {
+                source.PlayOneShot(damageAudio);
+            }
+            if ((pc1.attackPlr && hc1.enemyShielded) || (pc2.attackPlr && hc2.enemyShielded)) //Hitting enemy shield
+            {
+                source.PlayOneShot(shieldDamageAudio);
+            }
+            if (comb1.dead || comb2.dead) //Dying
+            {
+                source.PlayOneShot(deathAudio);
             }
 
             //Powerup pickup Audio
