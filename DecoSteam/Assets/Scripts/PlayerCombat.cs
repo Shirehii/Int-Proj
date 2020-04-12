@@ -10,7 +10,7 @@ public class PlayerCombat : MonoBehaviour
     public float Player2HPMax = 100;
     public float Player2HPCurrent;
 
-    public GameObject attp;
+    public BoxCollider2D attp;
 
     public PlayerController pc;
     public HitCheck hc;
@@ -26,12 +26,12 @@ public class PlayerCombat : MonoBehaviour
         
         if (gameObject.tag == "Player1")
         {
-            attp = GameObject.FindGameObjectWithTag("Attp1");
+            attp = GameObject.FindGameObjectWithTag("Attp1").GetComponent<BoxCollider2D>();
             hc = attp.GetComponent<HitCheck>();
         }
         if (gameObject.tag == "Player2")
         {
-            attp = GameObject.FindGameObjectWithTag("Attp2");
+            attp = GameObject.FindGameObjectWithTag("Attp2").GetComponent<BoxCollider2D>();
             hc = attp.GetComponent<HitCheck>();
         }
     }
@@ -41,7 +41,7 @@ public class PlayerCombat : MonoBehaviour
         Player1HPCurrent = Player1HPMax;
         Player2HPCurrent = Player2HPMax;
 
-        attp.SetActive(false);
+        attp.enabled = false;
     }
 
     void Update()
@@ -58,7 +58,7 @@ public class PlayerCombat : MonoBehaviour
 
     public void Attackplr()
     {
-        attp.SetActive(true);
+        attp.enabled = true;
         pc.attackPlr = false;
     }
 
@@ -87,6 +87,7 @@ public class PlayerCombat : MonoBehaviour
     {
         Debug.Log("I have died.");
         dead = true;
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<SceneCycling>().TurfChange();
     }
 
     private void OnTriggerEnter2D(Collider2D trigger)

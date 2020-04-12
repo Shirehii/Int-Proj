@@ -55,7 +55,7 @@ public class HitCheck : MonoBehaviour
 
     public void LateUpdate()
     {
-        gameObject.SetActive(false);
+        GetComponent<BoxCollider2D>().enabled = false;
     }
 
     //F
