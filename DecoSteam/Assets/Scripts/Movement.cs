@@ -7,12 +7,11 @@ public class Movement : MonoBehaviour
     //Component variables
     public Rigidbody2D rb;
     public PlayerController pc;
-
     public PlayerCombat comb;
 
     //Physics variables
     private float baseSpeed;
-    public int jumpCount = 0; //for jumping
+    public int jumpCount = 0;
     public bool canDoubleJump;
 
     //Powerup variables
